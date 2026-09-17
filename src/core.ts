@@ -1,0 +1,1 @@
+import { z } from 'zod'; import pino from 'pino'; const logger = pino(); export class BuilderCore { private schema = z.object({ name: z.string(), industry: z.string() }); generate(input: unknown) { const data = this.schema.parse(input); logger.info({ data }, 'Generating scaffold'); return { status: 'success', files: [] }; } }
